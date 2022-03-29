@@ -1,0 +1,55 @@
+drop database panapo;
+create database panapo;
+	use panapo;
+	select * from type_client LIMIT 0, 300;
+	select * from client LIMIT 0, 300;
+	select * from profession LIMIT 0, 300;
+	select * from person LIMIT 0, 300;
+	select * from team LIMIT 0, 300;
+	select * from report LIMIT 0, 300;
+	select * from stages LIMIT 0, 300;
+	select * from status LIMIT 0, 300;
+	select * from status_project LIMIT 0, 300;
+	select * from phases LIMIT 0, 300;
+	select * from project LIMIT 0, 300;
+	select * from rol LIMIT 0, 300;
+	select * from status LIMIT 0, 300;
+	select * from user LIMIT 0, 300;
+	-- Anadir type_client
+	INSERT INTO `panapo`.`type_client` (`id`, `description`) VALUES ('1', 'Externo');
+	INSERT INTO `panapo`.`type_client` (`id`, `description`) VALUES ('2', 'Interno');
+	-- Anadir client
+	INSERT INTO `panapo`.`client` (`id`, `company`, `email_repre`, `name_client`, `name_repre`, `phone_repre`, `typeclient_id`) VALUES ('1', 'Utez', 'asda@das', 'tu', 'dpadjp', '2131', '1');
+	INSERT INTO `panapo`.`client` (`id`, `company`, `email_repre`, `name_client`, `name_repre`, `phone_repre`, `typeclient_id`) VALUES ('2', 'Nmms', 'asd@dadds', 'naau', 'das', '2131', '2');
+	-- Anadir profession
+	INSERT INTO `panapo`.`profession` (`id`, `description`) VALUES ('1', 'Docente');
+	INSERT INTO `panapo`.`profession` (`id`, `description`) VALUES ('2', 'Becario');
+	INSERT INTO `panapo`.`profession` (`id`, `description`) VALUES ('3', 'Administrador');
+	-- Anadir person
+	INSERT INTO `panapo`.`person` (`id`, `date_birth`, `email`, `last_name`, `name`, `phone`, `profession_id`) VALUES ('1', '2002-08-24', '20203tn059@gmail.com', 'Valladares Borjes', 'Alan Yahir', '7773195078', '1');
+	-- Anadir team
+	INSERT INTO `panapo`.`team` (`id`) VALUES ('1');
+	INSERT INTO `panapo`.`team` (`id`) VALUES ('2');
+	INSERT INTO `panapo`.`team` (`id`) VALUES ('3');
+	-- Anadir stages
+	INSERT INTO `panapo`.`stages` (`id`, `description`) VALUES ('1', 'etapa1');
+	INSERT INTO `panapo`.`stages` (`id`, `description`) VALUES ('2', 'etapa2');
+	INSERT INTO `panapo`.`stages` (`id`, `description`) VALUES ('3', 'etapa3');
+	-- Anadir status_project
+	INSERT INTO `panapo`.`status_project` (`id`, `description`) VALUES ('1', 'estado1');
+	INSERT INTO `panapo`.`status_project` (`id`, `description`) VALUES ('2', 'estado2');
+	INSERT INTO `panapo`.`status_project` (`id`, `description`) VALUES ('3', 'estado3');
+	-- Anadir stages
+	INSERT INTO `panapo`.`phases` (`id`, `description`) VALUES ('1', 'fase1');
+	INSERT INTO `panapo`.`phases` (`id`, `description`) VALUES ('2', 'fase2');
+	INSERT INTO `panapo`.`phases` (`id`, `description`) VALUES ('3', 'fase3');
+	-- Anadir project
+	INSERT INTO `panapo`.`project` (`id`, `acronym`, `cotizacion`, `date_end`, `date_start`, `description`, `months`, `name`, `number_beca`, `priority`, `client_id`, `phases_id`, `project_id`, `stages_id`, `status_id`, `team_id`) VALUES ('1', 'abc', '2000', '2022-12-12', '2022-02-12', 'Asad', '10', 'Admiom', '5', '1', '1', '1', null, '1', '1', '1');
+	-- Anadir rol
+	INSERT INTO `panapo`.`rol` (`id`, `description`) VALUES ('1', 'Admin');
+	INSERT INTO `panapo`.`rol` (`id`, `description`) VALUES ('2', 'User');
+	-- Anadir Status
+	INSERT INTO `panapo`.`status` (`id`, `description`) VALUES ('1', 'Activo');
+	INSERT INTO `panapo`.`status` (`id`, `description`) VALUES ('2', 'Inactivo');
+	-- Anadir user
+	INSERT INTO `panapo`.`user` (`id`, `password`, `person_id`, `rol_id`, `status_id`) VALUES ('1', '123456', '1', '1', '1');
