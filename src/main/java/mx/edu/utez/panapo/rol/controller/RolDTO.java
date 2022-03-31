@@ -1,42 +1,24 @@
-package mx.edu.utez.panapo.rol;
+package mx.edu.utez.panapo.rol.controller;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import mx.edu.utez.panapo.user.model.User;
 
-import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
-@Entity
-public class Rol {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class RolDTO {
     private long id;
-    @Column(nullable = false, unique = true, length = 20)
     private String description;
-    @ManyToMany(mappedBy = "authorities")
-    @JsonIgnore
     private Set<User> users;
 
-    public Rol() {
+    public RolDTO() {
     }
 
-    public Rol(long id, String description, Set<User> users) {
+    public RolDTO(long id, String description, Set<User> users) {
         this.id = id;
         this.description = description;
         this.users = users;
     }
 
-    public Rol(String description) {
-        this.description = description;
-    }
-
-    public Rol(long id, String description) {
-        this.id = id;
-        this.description = description;
-    }
-
-    public Rol(String description, Set<User> users) {
+    public RolDTO(String description, Set<User> users) {
         this.description = description;
         this.users = users;
     }
@@ -65,3 +47,4 @@ public class Rol {
         this.users = users;
     }
 }
+
