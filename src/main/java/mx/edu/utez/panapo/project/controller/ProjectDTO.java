@@ -2,10 +2,10 @@ package mx.edu.utez.panapo.project.controller;
 
 import mx.edu.utez.panapo.StatusProject.StatusProject;
 import mx.edu.utez.panapo.client.model.Client;
+import mx.edu.utez.panapo.personTeam.model.PersonTeam;
 import mx.edu.utez.panapo.phases.Phases;
 import mx.edu.utez.panapo.project.model.Project;
 import mx.edu.utez.panapo.stages.Stages;
-import mx.edu.utez.panapo.team.Team;
 
 public class ProjectDTO {
     private long id;
@@ -18,7 +18,7 @@ public class ProjectDTO {
     private String numberBeca;
     private String acronym;
     private String priority;
-    private Team team;
+    private PersonTeam personTeam;
     private Phases phases;
     private Stages stages;
     private Client client;
@@ -28,7 +28,7 @@ public class ProjectDTO {
     public ProjectDTO() {
     }
 
-    public ProjectDTO(String name, String description, String dateStart, String dateEnd, String cotizacion, String months, String numberBeca, String acronym, String priority, Team team, Phases phases, Stages stages, Client client, StatusProject statusProject, Project project) {
+    public ProjectDTO(String name, String description, String dateStart, String dateEnd, String cotizacion, String months, String numberBeca, String acronym, String priority, PersonTeam personTeam, Phases phases, Stages stages, Client client, StatusProject statusProject, Project project) {
         this.name = name;
         this.description = description;
         this.dateStart = dateStart;
@@ -38,7 +38,7 @@ public class ProjectDTO {
         this.numberBeca = numberBeca;
         this.acronym = acronym;
         this.priority = priority;
-        this.team = team;
+        this.personTeam = personTeam;
         this.phases = phases;
         this.stages = stages;
         this.client = client;
@@ -46,7 +46,7 @@ public class ProjectDTO {
         this.project = project;
     }
 
-    public ProjectDTO(long id, String name, String description, String dateStart, String dateEnd, String cotizacion, String months, String numberBeca, String acronym, String priority, Team team, Phases phases, Stages stages, Client client, StatusProject statusProject, Project project) {
+    public ProjectDTO(long id, String name, String description, String dateStart, String dateEnd, String cotizacion, String months, String numberBeca, String acronym, String priority, PersonTeam personTeam, Phases phases, Stages stages, Client client, StatusProject statusProject, Project project) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -57,7 +57,7 @@ public class ProjectDTO {
         this.numberBeca = numberBeca;
         this.acronym = acronym;
         this.priority = priority;
-        this.team = team;
+        this.personTeam = personTeam;
         this.phases = phases;
         this.stages = stages;
         this.client = client;
@@ -145,12 +145,12 @@ public class ProjectDTO {
         this.priority = priority;
     }
 
-    public Team getTeam() {
-        return team;
+    public PersonTeam getTeam() {
+        return personTeam;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
+    public void setTeam(PersonTeam personTeam) {
+        this.personTeam = personTeam;
     }
 
     public Phases getPhases() {

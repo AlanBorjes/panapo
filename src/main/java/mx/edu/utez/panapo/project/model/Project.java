@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import mx.edu.utez.panapo.StatusProject.StatusProject;
 import mx.edu.utez.panapo.client.model.Client;
 import mx.edu.utez.panapo.person.model.Person;
+import mx.edu.utez.panapo.personTeam.model.PersonTeam;
 import mx.edu.utez.panapo.phases.Phases;
 import mx.edu.utez.panapo.report.model.Report;
 import mx.edu.utez.panapo.stages.Stages;
-import mx.edu.utez.panapo.team.Team;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
@@ -32,8 +32,8 @@ public class Project {
     @Column(nullable = false)
     private String priority;
     @ManyToOne
-    @JoinColumn(name = "team_id", nullable = false)
-    private Team team;
+    @JoinColumn(name = "personTeam_id", nullable = false)
+    private PersonTeam personTeam;
     @ManyToOne
     @JoinColumn(name = "phases_id")
     private Phases phases;
@@ -59,7 +59,7 @@ public class Project {
     public Project() {
     }
 
-    public Project(String name, String description, String dateStart, String dateEnd, String cotizacion, String months, String numberBeca, String acronym, String priority, Team team, Phases phases, Stages stages, Client client, StatusProject statusProject, Project project) {
+    public Project(String name, String description, String dateStart, String dateEnd, String cotizacion, String months, String numberBeca, String acronym, String priority, PersonTeam personTeam, Phases phases, Stages stages, Client client, StatusProject statusProject, Project project) {
         this.name = name;
         this.description = description;
         this.dateStart = dateStart;
@@ -69,7 +69,7 @@ public class Project {
         this.numberBeca = numberBeca;
         this.acronym = acronym;
         this.priority = priority;
-        this.team = team;
+        this.personTeam = personTeam;
         this.phases = phases;
         this.stages = stages;
         this.client = client;
@@ -77,7 +77,7 @@ public class Project {
         this.project = project;
     }
 
-    public Project(long id, String name, String description, String dateStart, String dateEnd, String cotizacion, String months, String numberBeca, String acronym, String priority, Team team, Phases phases, Stages stages, Client client, StatusProject statusProject, Project project) {
+    public Project(long id, String name, String description, String dateStart, String dateEnd, String cotizacion, String months, String numberBeca, String acronym, String priority, PersonTeam personTeam, Phases phases, Stages stages, Client client, StatusProject statusProject, Project project) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -88,7 +88,7 @@ public class Project {
         this.numberBeca = numberBeca;
         this.acronym = acronym;
         this.priority = priority;
-        this.team = team;
+        this.personTeam = personTeam;
         this.phases = phases;
         this.stages = stages;
         this.client = client;
@@ -176,12 +176,12 @@ public class Project {
         this.priority = priority;
     }
 
-    public Team getTeam() {
-        return team;
+    public PersonTeam getTeam() {
+        return personTeam;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
+    public void setTeam(PersonTeam personTeam) {
+        this.personTeam = personTeam;
     }
 
     public Phases getPhases() {

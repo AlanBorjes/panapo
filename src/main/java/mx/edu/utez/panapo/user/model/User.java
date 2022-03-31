@@ -25,7 +25,9 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "status_id", nullable = false)
     private Status status;
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Rol> authorities;
 
     public User() {
@@ -55,6 +57,14 @@ public class User {
         this.status = status;
     }
 
+    public User(String password, String username, String code, Person person, Status status, Set<Rol> authorities) {
+        this.password = password;
+        this.username = username;
+        this.code = code;
+        this.person = person;
+        this.status = status;
+        this.authorities = authorities;
+    }
 
     public long getId() {
         return id;

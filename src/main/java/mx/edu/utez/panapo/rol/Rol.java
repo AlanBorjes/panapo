@@ -14,10 +14,7 @@ public class Rol {
     private long id;
     @Column(nullable = false, unique = true, length = 20)
     private String description;
-    @ManyToMany
-    @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn (name ="role_id"),
-            inverseJoinColumns = @JoinColumn(name ="user_id"))
+    @ManyToMany(mappedBy = "authorities")
     @JsonIgnore
     private Set<User> users;
 

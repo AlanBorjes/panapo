@@ -15,18 +15,6 @@ public class PasswordController {
     @Autowired
     EmailService emailService;
 
-    @PostMapping("/")
-    public ResponseEntity<Message> sendMailContact(@RequestBody EmailDTO emailDTO,
-                                                   BindingResult result){
-        if(result.hasErrors())
-            return new ResponseEntity<>(new Message("Verifique los datos", true, null),
-                    HttpStatus.BAD_REQUEST);
-        if(emailService.sendEmail(emailDTO)){
-            return  new ResponseEntity<>(new Message("Correo enviado correctamente", false, emailDTO),
-                    HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(new Message("Error al enviar el correo", true, emailDTO),
-                    HttpStatus.BAD_REQUEST);
-        }
-    }
+
+
 }

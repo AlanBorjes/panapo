@@ -3,7 +3,6 @@ package mx.edu.utez.panapo.report.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import mx.edu.utez.panapo.phases.Phases;
 import mx.edu.utez.panapo.project.model.Project;
-import mx.edu.utez.panapo.team.Team;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -25,11 +24,11 @@ public class Report {
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
 
+    public Report() {
 
-    public Report(String cost, String date, String daysDeviation, String percentage, String phasePlanned, String planned, String reportDTOPhasePlanned, String stageReal, Project project) {
     }
 
-    public Report(long id, String phasePlanned, String phaseReal, String stagePlanned, String stageReal, String percentage, String cost, String daysDeviation, String date, Project project, Team team) {
+    public Report(long id, String phasePlanned, String phaseReal, String stagePlanned, String stageReal, String percentage, String cost, String daysDeviation, String date, Project project) {
         this.id = id;
         this.phasePlanned = phasePlanned;
         this.phaseReal = phaseReal;
@@ -42,7 +41,7 @@ public class Report {
         this.project = project;
     }
 
-    public Report(String phasePlanned, String phaseReal, String stagePlanned, String stageReal, String percentage, String cost, String daysDeviation, String date, Project project, Team team) {
+    public Report(String phasePlanned, String phaseReal, String stagePlanned, String stageReal, String percentage, String cost, String daysDeviation, String date, Project project) {
         this.phasePlanned = phasePlanned;
         this.phaseReal = phaseReal;
         this.stagePlanned = stagePlanned;
@@ -52,13 +51,6 @@ public class Report {
         this.daysDeviation = daysDeviation;
         this.date = date;
         this.project = project;
-    }
-
-    public Report(long id, String cost, String date, String daysDeviation, String percentage, String phasePlanned, String phasePlanned1, String phasePlanned2, String stageReal, Project project) {
-    }
-
-    public Report() {
-
     }
 
     public long getId() {

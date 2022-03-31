@@ -2,11 +2,12 @@ package mx.edu.utez.panapo.personTeam.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import mx.edu.utez.panapo.person.model.Person;
+import mx.edu.utez.panapo.project.model.Project;
 import mx.edu.utez.panapo.rolProject.RolProject;
-import mx.edu.utez.panapo.team.Team;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class PersonTeam {
@@ -21,24 +22,24 @@ public class PersonTeam {
     @JoinColumn(name = "rolProject_id", nullable = false)
     @NonNull
     RolProject rolProject;
-    @ManyToOne
-    @JoinColumn(name = "team_id", nullable = false)
-    Team team;
+    @OneToMany(mappedBy = "statusProject")
+    @JsonIgnore
+    private List<Project> project;
 
     public PersonTeam() {
     }
 
-    public PersonTeam(Person person, RolProject rolProject, Team team) {
+    public PersonTeam(Person person, RolProject rolProject, List<Project> project) {
         this.person = person;
         this.rolProject = rolProject;
-        this.team = team;
+        this.project = project;
     }
 
-    public PersonTeam(long id,  Person person, RolProject rolProject, Team team) {
+    public PersonTeam(long id,  Person person, RolProject rolProject, List<Project> project) {
         this.id = id;
         this.person = person;
         this.rolProject = rolProject;
-        this.team = team;
+        this.project = project;
     }
 
     public long getId() {
@@ -65,11 +66,11 @@ public class PersonTeam {
         this.rolProject = rolProject;
     }
 
-    public Team getTeam() {
-        return team;
+    public List<Project> getProject() {
+        return project;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
+    public void setProject(List<Project> team) {
+        this.project = team;
     }
 }

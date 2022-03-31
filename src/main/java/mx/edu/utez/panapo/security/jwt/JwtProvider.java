@@ -15,22 +15,21 @@ public class JwtProvider {
     private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
     @Value("${jwt.secret}")
     private String secret;
+
     @Value("${jwt.expiration}")
     private int expiration;
 
     public String generateToken(Authentication authentication){
         AuthUser authUser = (AuthUser) authentication.getPrincipal();
-        return Jwts.builder().setSubject(authUser.getUsername())
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime()+ expiration * 100000000))
-                .signWith(SignatureAlgorithm.HS512, secret).compact();
+        return Jwts.builder().setSubject(authUser.getUsername()).setIssuedAt(new Date()).setExpiration(new Date(new Date().getTime()+expiration*1000l))
+                .signWith(SignatureAlgorithm.HS512,secret).compact();
+    }
+    public  String getUsernameFromToken(String token){
+        return Jwts.parser().setSigningKey(secret)
+                .parseClaimsJws(token).getBody().getSubject();
     }
 
-    public String getUsernameFromToken(String token){
-        return  Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
-    }
-
-    public boolean validateToken(String token){
+    public boolean validationToken(String token){
         try {
             Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
             return true;
@@ -40,10 +39,10 @@ public class JwtProvider {
             logger.error("Token no soportado");
         }catch (ExpiredJwtException e){
             logger.error("El token ha expirado");
-        }catch(IllegalArgumentException e){
+        }catch (IllegalArgumentException e){
             logger.error("Token no provisto");
-        }catch(SignatureException e){
-            logger.error("Error en la firma del token");
+        }catch (SignatureException e){
+            logger.error("Error en la forma del token");
         }
         return false;
     }

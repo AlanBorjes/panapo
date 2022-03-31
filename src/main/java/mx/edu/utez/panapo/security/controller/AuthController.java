@@ -24,23 +24,20 @@ public class AuthController {
     @Autowired
     AuthenticationManager authenticationManager;
     @Autowired
-    JwtProvider provider;
+    JwtProvider jwtprovider;
 
     @PostMapping("/login")
-    public ResponseEntity<Message> login(@Valid @RequestBody LoginUserDTO loginUserDTO,
-                                         BindingResult result){
-        if(result.hasErrors())
-            return new ResponseEntity<>(new Message("Usuario y/o contraseña incorrectos", true, null),
+    public ResponseEntity<Message> login(@Valid @RequestBody LoginUserDTO loginUserDTO, BindingResult result) {
+        if (result.hasErrors())
+            return new ResponseEntity<>(new Message("Usuario y/o contraseña  incorrectos", true, null),
                     HttpStatus.BAD_REQUEST);
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginUserDTO.getUsername(), loginUserDTO.getPassword())
-        );
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUserDTO.getUsername(), loginUserDTO.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String token = provider.generateToken(authentication);
+        String token = jwtprovider.generateToken(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         Map<String, Object> data = new HashMap<>();
         data.put("token", token);
         data.put("user", userDetails);
-        return new ResponseEntity<>(new Message("OK", false, data), HttpStatus.OK);
+        return new ResponseEntity<>(new Message("ok", false, data), HttpStatus.OK);
     }
 }

@@ -36,6 +36,7 @@ public class UserService {
         return new ResponseEntity<>(new Message("El usuario ya existe", true, userRepository.findById(id)), HttpStatus.BAD_REQUEST);
     }
 
+
     @Transactional(rollbackFor = {SQLException.class}) // si encuenra un error lo vuelve a hacer
     public ResponseEntity<Message> save(User user){
         if(userRepository.existsByUsername(user.getUsername()))
@@ -59,8 +60,25 @@ public class UserService {
         return new ResponseEntity<>(new Message("El Usuario no existe", true, null), HttpStatus.BAD_REQUEST);
     }
 
+    @Transactional(rollbackFor = {SQLException.class}) // si encuenra un error lo vuelve a hacer
+    public ResponseEntity<Message> savePassword(User user){
+        if(userRepository.existsByCode(user.getCode())){
+            return new ResponseEntity<>(new Message("OK", false, userRepository.saveAndFlush(user)), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new Message("El Usuario no existe", true, null), HttpStatus.BAD_REQUEST);
+    }
+
+    @Transactional(rollbackFor = {SQLException.class}) // si encuenra un error lo vuelve a hacer
+    public ResponseEntity<Message> updatepassword(User user,String code){
+        if(userRepository.existsByUsername(user.getUsername())){
+            user.setCode(code);
+            return new ResponseEntity<>(new Message("OK", false, userRepository.saveAndFlush(user)), HttpStatus.OK);
+        }return new ResponseEntity<>(new Message("La Usuario no existe", true, null), HttpStatus.BAD_REQUEST);
+    }
+
     @Transactional(readOnly = true)
     public Optional<User> getByUsername(String username){
         return userRepository.findByUsername(username);
     }
+
 }
