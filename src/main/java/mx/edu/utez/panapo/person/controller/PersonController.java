@@ -25,11 +25,11 @@ public class PersonController {
 
     @PostMapping("/")
     public  ResponseEntity<Message> saveClient(@RequestBody PersonDTO personDTO){
-        return  personService.save(new Person(personDTO.getName(),personDTO.getLastName(),personDTO.getEmail(),personDTO.getDateBirth(),personDTO.getPhone(),personDTO.getProfession()));
+        return  personService.save(new Person(personDTO.getName(),personDTO.getSurname(), personDTO.getSecondSurname(), personDTO.getEmail(),personDTO.getDateBirth(),personDTO.getPhone(),personDTO.getProfession()));
     }
 
     @PutMapping("/")
     public ResponseEntity<Message> update(@RequestBody PersonDTO personDTO){
-        return personService.update(new Person(personDTO.getId(),personDTO.getName(),personDTO.getLastName(),personDTO.getEmail(),personDTO.getDateBirth(),personDTO.getPhone(),personDTO.getProfession()));
+        return personService.update(new Person(personDTO.getId(),personDTO.getName(),personDTO.getSurname(), personDTO.getSecondSurname(),personDTO.getEmail(),personDTO.getDateBirth(),personDTO.getPhone(),personDTO.getProfession()));
     }
 }

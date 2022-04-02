@@ -5,7 +5,8 @@ import mx.edu.utez.panapo.profession.Profession;
 public class PersonDTO {
     private long id;
     private String name;
-    private String lastName;
+    private String surname;
+    private String secondSurname;
     private String email;
     private String dateBirth;
     private String phone;
@@ -14,19 +15,21 @@ public class PersonDTO {
     public PersonDTO() {
     }
 
-    public PersonDTO(String name, String lastName, String email, String dateBirth, String phone, Profession profession) {
+    public PersonDTO(long id, String name, String surname, String secondSurname, String email, String dateBirth, String phone, Profession profession) {
+        this.id = id;
         this.name = name;
-        this.lastName = lastName;
+        this.surname = surname;
+        this.secondSurname = secondSurname;
         this.email = email;
         this.dateBirth = dateBirth;
         this.phone = phone;
         this.profession = profession;
     }
 
-    public PersonDTO(long id, String name, String lastName, String email, String dateBirth, String phone, Profession profession) {
-        this.id = id;
+    public PersonDTO(String name, String surname, String secondSurname, String email, String dateBirth, String phone, Profession profession) {
         this.name = name;
-        this.lastName = lastName;
+        this.surname = surname;
+        this.secondSurname = secondSurname;
         this.email = email;
         this.dateBirth = dateBirth;
         this.phone = phone;
@@ -49,12 +52,20 @@ public class PersonDTO {
         this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getSecondSurname() {
+        return secondSurname;
+    }
+
+    public void setSecondSurname(String secondSurname) {
+        this.secondSurname = secondSurname;
     }
 
     public String getEmail() {

@@ -16,8 +16,8 @@ public class Person {
     private long id;
     @Column(nullable = false)
     private String name;
-
-    private String lastName;
+    private String surname;
+    private String secondSurname;
     @Column(nullable = false)
     private String email;
     private String dateBirth;
@@ -36,23 +36,50 @@ public class Person {
     public Person() {
     }
 
-    public Person(long id, String name, String lastName, String email, String dateBirth, String phone,  Profession profession) {
+    public Person(long id, String name, String surname, String secondSurname, String email, String dateBirth, String phone, Profession profession) {
         this.id = id;
         this.name = name;
-        this.lastName = lastName;
+        this.surname = surname;
+        this.secondSurname = secondSurname;
         this.email = email;
         this.dateBirth = dateBirth;
         this.phone = phone;
         this.profession = profession;
     }
 
-    public Person(String name, String lastName, String email, String dateBirth, String phone,  Profession profession) {
+    public Person(String name, String surname, String secondSurname, String email, String dateBirth, String phone, @NonNull Profession profession) {
         this.name = name;
-        this.lastName = lastName;
+        this.surname = surname;
+        this.secondSurname = secondSurname;
         this.email = email;
         this.dateBirth = dateBirth;
         this.phone = phone;
         this.profession = profession;
+    }
+
+    public Person(String name, String surname, String secondSurname, String email, String dateBirth, String phone, @NonNull Profession profession, List<PersonTeam> personTeamList, User users) {
+        this.name = name;
+        this.surname = surname;
+        this.secondSurname = secondSurname;
+        this.email = email;
+        this.dateBirth = dateBirth;
+        this.phone = phone;
+        this.profession = profession;
+        this.personTeamList = personTeamList;
+        this.users = users;
+    }
+
+    public Person(long id, String name, String surname, String secondSurname, String email, String dateBirth, String phone, @NonNull Profession profession, List<PersonTeam> personTeamList, User users) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.secondSurname = secondSurname;
+        this.email = email;
+        this.dateBirth = dateBirth;
+        this.phone = phone;
+        this.profession = profession;
+        this.personTeamList = personTeamList;
+        this.users = users;
     }
 
     public long getId() {
@@ -71,12 +98,36 @@ public class Person {
         this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getSecondSurname() {
+        return secondSurname;
+    }
+
+    public void setSecondSurname(String secondSurname) {
+        this.secondSurname = secondSurname;
+    }
+
+    public List<PersonTeam> getPersonTeamList() {
+        return personTeamList;
+    }
+
+    public void setPersonTeamList(List<PersonTeam> personTeamList) {
+        this.personTeamList = personTeamList;
+    }
+
+    public User getUsers() {
+        return users;
+    }
+
+    public void setUsers(User users) {
+        this.users = users;
     }
 
     public String getEmail() {
