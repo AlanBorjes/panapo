@@ -43,7 +43,16 @@ public class User {
         this.status = status;
     }
 
-    public User( String password, String email, String code) {
+    public User(long id, String password, Person person, Status status, Set<Rol> authorities) {
+        this.id = id;
+        this.password = password;
+        this.username = username;
+        this.person = person;
+        this.status = status;
+        this.authorities = authorities;
+    }
+
+    public User(String password, String email, String code) {
         this.password = password;
         this.username = person.getEmail();
         this.person.setEmail(email);
