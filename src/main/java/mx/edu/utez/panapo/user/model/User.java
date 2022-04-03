@@ -59,6 +59,11 @@ public class User {
         this.authorities = authorities;
     }
 
+    public User(long id, String password) {
+        this.id = id;
+        this.password = password;
+    }
+
     public User(String password, String email, String code) {
         this.password = password;
         this.username = person.getEmail();

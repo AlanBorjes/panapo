@@ -65,8 +65,8 @@ public class UserController {
 
     @PutMapping("/update")
     public ResponseEntity<Message> updateAll( @RequestBody UserDTO userDTO){
-        return userService.update(new User(userDTO.getId(),userDTO.getPerson(), userDTO.getStatus(), userDTO.getAuthorities()));
-    }   
+        return userService.updatePassword(new User(userDTO.getId(),passwordEncoder.encode(userDTO.getPassword())));
+    }
 
 
 

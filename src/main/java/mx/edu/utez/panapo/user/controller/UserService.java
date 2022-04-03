@@ -55,10 +55,29 @@ public class UserService {
     @Transactional(rollbackFor = {SQLException.class}) // si encuenra un error lo vuelve a hacer
     public ResponseEntity<Message> update(User user){
         if(userRepository.existsById(user.getId())){
-            return new ResponseEntity<>(new Message("OK", false, userRepository.saveAndFlush(user)), HttpStatus.OK);
+
+            User usertemp = getByUsername(user.getPerson().getEmail()).get();
+            Person personTemp = user.getPerson();
+            personTemp = personRepository.saveAndFlush(personTemp);
+            usertemp.setPerson(personTemp);
+            usertemp.setUsername(personTemp.getEmail());
+            return new ResponseEntity<>(new Message("OK", false, userRepository.saveAndFlush(usertemp)), HttpStatus.OK);
         }
+
         return new ResponseEntity<>(new Message("El Usuario no existe", true, null), HttpStatus.BAD_REQUEST);
     }
+
+    @Transactional(rollbackFor = {SQLException.class}) // si encuenra un error lo vuelve a hacer
+    public ResponseEntity<Message> updatePassword(User user){
+        if(userRepository.existsById(user.getId())){
+            User user1 =  getById(user.getId()).get();
+            user1.setPassword(user.getPassword());
+            return new ResponseEntity<>(new Message("OK", false, userRepository.saveAndFlush(user1)), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(new Message("El Usuario no existe", true, null), HttpStatus.BAD_REQUEST);
+    }
+
 
     @Transactional(rollbackFor = {SQLException.class}) // si encuenra un error lo vuelve a hacer
     public ResponseEntity<Message> savePassword(User user){
@@ -79,6 +98,12 @@ public class UserService {
     @Transactional(readOnly = true)
     public Optional<User> getByUsername(String username){
         return userRepository.findByUsername(username);
+    }
+
+
+    @Transactional(readOnly = true)
+    public Optional<User> getById(long id){
+        return userRepository.findById(id);
     }
 
 }
