@@ -60,8 +60,13 @@ public class UserController {
 
     @PutMapping("/")
     public ResponseEntity<Message> update( @RequestBody UserDTO userDTO){
-        return userService.update(new User(userDTO.getId(),userDTO.getPassword(),userDTO.getPerson(), userDTO.getStatus(), userDTO.getAuthorities()));
+        return userService.update(new User(userDTO.getId(),userDTO.getPerson(), userDTO.getStatus(), userDTO.getAuthorities()));
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<Message> updateAll( @RequestBody UserDTO userDTO){
+        return userService.update(new User(userDTO.getId(),userDTO.getPerson(), userDTO.getStatus(), userDTO.getAuthorities()));
+    }   
 
 
 

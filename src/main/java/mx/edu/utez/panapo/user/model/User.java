@@ -43,10 +43,17 @@ public class User {
         this.status = status;
     }
 
-    public User(long id, String password, Person person, Status status, Set<Rol> authorities) {
+    public User(long id, Person person, Status status, Set<Rol> authorities) {
+        this.id = id;
+
+        this.person = person;
+        this.status = status;
+        this.authorities = authorities;
+    }
+
+    public User(long id, String password,Person person, Status status, Set<Rol> authorities) {
         this.id = id;
         this.password = password;
-        this.username = username;
         this.person = person;
         this.status = status;
         this.authorities = authorities;
