@@ -14,12 +14,18 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false)
-    private String nameClient;
+    private String name;
+    private String surname;
+    private String secondSurname;
+    private String phoneClient;
+    private String emailClient;
     @Column(nullable = false)
     private String company;
     @Column(nullable = false)
     private String emailRepre;
     private String nameRepre;
+    private String surnameRepre;
+    private String secondSurnameRepre;
     private String phoneRepre;
     @ManyToOne
     @JoinColumn(name = "typeclient_id", nullable = false)
@@ -32,23 +38,33 @@ public class Client {
     public Client() {
     }
 
-
-
-    public Client(String nameClient, String company, String emailRepre, String nameRepre, String phoneRepre, @NonNull TypeClient typeClient) {
-        this.nameClient = nameClient;
+    public Client(long id, String name, String surname, String secondSurname, String phoneClient, String emailClient, String company, String emailRepre, String nameRepre, String surnameRepre, String secondSurnameRepre, String phoneRepre, @NonNull TypeClient typeClient) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.secondSurname = secondSurname;
+        this.phoneClient = phoneClient;
+        this.emailClient = emailClient;
         this.company = company;
         this.emailRepre = emailRepre;
         this.nameRepre = nameRepre;
+        this.surnameRepre = surnameRepre;
+        this.secondSurnameRepre = secondSurnameRepre;
         this.phoneRepre = phoneRepre;
         this.typeClient = typeClient;
     }
 
-    public Client(long id, String nameClient, String company, String emailRepre, String nameRepre, String phoneRepre, @NonNull TypeClient typeClient) {
-        this.id = id;
-        this.nameClient = nameClient;
+    public Client(String name, String surname, String secondSurname, String phoneClient, String emailClient, String company, String emailRepre, String nameRepre, String surnameRepre, String secondSurnameRepre, String phoneRepre, @NonNull TypeClient typeClient) {
+        this.name = name;
+        this.surname = surname;
+        this.secondSurname = secondSurname;
+        this.phoneClient = phoneClient;
+        this.emailClient = emailClient;
         this.company = company;
         this.emailRepre = emailRepre;
         this.nameRepre = nameRepre;
+        this.surnameRepre = surnameRepre;
+        this.secondSurnameRepre = secondSurnameRepre;
         this.phoneRepre = phoneRepre;
         this.typeClient = typeClient;
     }
@@ -61,44 +77,92 @@ public class Client {
         this.id = id;
     }
 
-    public String getNameClient() {
-        return nameClient;
+    public String getEmailClient() {
+        return emailClient;
     }
 
-    public void setNameClient(String name) {
-        this.nameClient = name;
+    public void setEmailClient(String emailClient) {
+        this.emailClient = emailClient;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getSecondSurname() {
+        return secondSurname;
+    }
+
+    public void setSecondSurname(String secondSurname) {
+        this.secondSurname = secondSurname;
     }
 
     public String getCompany() {
         return company;
     }
 
-    public void setCompany(String lastName) {
-        this.company = lastName;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public String getEmailRepre() {
         return emailRepre;
     }
 
-    public void setEmailRepre(String email) {
-        this.emailRepre = email;
+    public void setEmailRepre(String emailRepre) {
+        this.emailRepre = emailRepre;
     }
 
     public String getNameRepre() {
         return nameRepre;
     }
 
-    public void setNameRepre(String dateBirth) {
-        this.nameRepre = dateBirth;
+    public void setNameRepre(String nameRepre) {
+        this.nameRepre = nameRepre;
+    }
+
+    public String getPhoneClient() {
+        return phoneClient;
+    }
+
+    public void setPhoneClient(String phoneClient) {
+        this.phoneClient = phoneClient;
+    }
+
+    public String getSurnameRepre() {
+        return surnameRepre;
+    }
+
+    public void setSurnameRepre(String surnameRepre) {
+        this.surnameRepre = surnameRepre;
+    }
+
+    public String getSecondSurnameRepre() {
+        return secondSurnameRepre;
+    }
+
+    public void setSecondSurnameRepre(String secondSurnameRepre) {
+        this.secondSurnameRepre = secondSurnameRepre;
     }
 
     public String getPhoneRepre() {
         return phoneRepre;
     }
 
-    public void setPhoneRepre(String phone) {
-        this.phoneRepre = phone;
+    public void setPhoneRepre(String phoneRepre) {
+        this.phoneRepre = phoneRepre;
     }
 
     @NonNull
@@ -109,4 +173,13 @@ public class Client {
     public void setTypeClient(@NonNull TypeClient typeClient) {
         this.typeClient = typeClient;
     }
+
+    public List<Project> getProjectList() {
+        return projectList;
+    }
+
+    public void setProjectList(List<Project> projectList) {
+        this.projectList = projectList;
+    }
 }
+

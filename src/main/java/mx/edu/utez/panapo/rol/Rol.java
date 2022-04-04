@@ -12,6 +12,8 @@ public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(nullable = false,unique = true, length = 6)
+    private String acronym;
     @Column(nullable = false, unique = true, length = 20)
     private String description;
     @ManyToMany(mappedBy = "authorities")
@@ -21,24 +23,23 @@ public class Rol {
     public Rol() {
     }
 
-    public Rol(long id, String description, Set<User> users) {
+    public Rol(long id, String acronym, String description) {
         this.id = id;
-        this.description = description;
-        this.users = users;
-    }
-
-    public Rol(String description) {
+        this.acronym = acronym;
         this.description = description;
     }
 
-    public Rol(long id, String description) {
-        this.id = id;
+    public Rol(String acronym, String description) {
+        this.acronym = acronym;
         this.description = description;
     }
 
-    public Rol(String description, Set<User> users) {
-        this.description = description;
-        this.users = users;
+    public String getAcronym() {
+        return acronym;
+    }
+
+    public void setAcronym(String acronym) {
+        this.acronym = acronym;
     }
 
     public long getId() {

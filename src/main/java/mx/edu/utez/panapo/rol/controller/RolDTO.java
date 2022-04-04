@@ -6,21 +6,30 @@ import java.util.Set;
 
 public class RolDTO {
     private long id;
+    private String acronym;
     private String description;
     private Set<User> users;
 
     public RolDTO() {
     }
 
-    public RolDTO(long id, String description, Set<User> users) {
+    public RolDTO(long id, String acronym, String description) {
         this.id = id;
+        this.acronym = acronym;
         this.description = description;
-        this.users = users;
     }
 
-    public RolDTO(String description, Set<User> users) {
+    public RolDTO(String acronym, String description) {
+        this.acronym = acronym;
         this.description = description;
-        this.users = users;
+    }
+
+    public String getAcronym() {
+        return acronym;
+    }
+
+    public void setAcronym(String acronym) {
+        this.acronym = acronym;
     }
 
     public long getId() {

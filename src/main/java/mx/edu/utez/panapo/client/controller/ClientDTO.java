@@ -4,36 +4,68 @@ import mx.edu.utez.panapo.type_client.TypeClient;
 
 public class ClientDTO {
     private  long id;
-    private String nameClient;
+    private String name;
+    private String surname;
+    private String secondSurname;
+    private String phoneClient;
+    private String emailClient;
     private String company;
     private String emailRepre;
     private String nameRepre;
+    private String surnameRepre;
+    private String secondSurnameRepre;
     private String phoneRepre;
     private TypeClient typeClient;
+
 
     public ClientDTO() {
     }
 
-    public ClientDTO(long id, String nameClient, String company, String emailRepre, String nameRepre, String clientDTOEmail, String phoneRepre, TypeClient typeClient) {
-    }
-
-    public ClientDTO(String nameClient, String company, String emailRepre, String nameRepre, String phoneRepre, TypeClient typeClient) {
-        this.nameClient = nameClient;
-        this.company = company;
-        this.emailRepre = emailRepre;
-        this.nameRepre = nameRepre;
-        this.phoneRepre = phoneRepre;
-        this.typeClient = typeClient;
-    }
-
-    public ClientDTO(long id, String nameClient, String company, String emailRepre, String nameRepre, String phoneRepre, TypeClient typeClient) {
+    public ClientDTO(long id, String name, String surname, String secondSurname, String phoneClient, String emailClient, String company, String emailRepre, String nameRepre, String surnameRepre, String secondSurnameRepre, String phoneRepre, TypeClient typeClient) {
         this.id = id;
-        this.nameClient = nameClient;
+        this.name = name;
+        this.surname = surname;
+        this.secondSurname = secondSurname;
+        this.phoneClient = phoneClient;
+        this.emailClient = emailClient;
         this.company = company;
         this.emailRepre = emailRepre;
         this.nameRepre = nameRepre;
+        this.surnameRepre = surnameRepre;
+        this.secondSurnameRepre = secondSurnameRepre;
         this.phoneRepre = phoneRepre;
         this.typeClient = typeClient;
+    }
+
+    public ClientDTO(String name, String surname, String secondSurname, String phoneClient, String emailClient, String company, String emailRepre, String nameRepre, String surnameRepre, String secondSurnameRepre, String phoneRepre, TypeClient typeClient) {
+        this.name = name;
+        this.surname = surname;
+        this.secondSurname = secondSurname;
+        this.phoneClient = phoneClient;
+        this.emailClient = emailClient;
+        this.company = company;
+        this.emailRepre = emailRepre;
+        this.nameRepre = nameRepre;
+        this.surnameRepre = surnameRepre;
+        this.secondSurnameRepre = secondSurnameRepre;
+        this.phoneRepre = phoneRepre;
+        this.typeClient = typeClient;
+    }
+
+    public String getEmailClient() {
+        return emailClient;
+    }
+
+    public void setEmailClient(String emailClient) {
+        this.emailClient = emailClient;
+    }
+
+    public String getPhoneClient() {
+        return phoneClient;
+    }
+
+    public void setPhoneClient(String phoneClient) {
+        this.phoneClient = phoneClient;
     }
 
     public long getId() {
@@ -44,12 +76,28 @@ public class ClientDTO {
         this.id = id;
     }
 
-    public String getNameClient() {
-        return nameClient;
+    public String getName() {
+        return name;
     }
 
-    public void setNameClient(String nameClient) {
-        this.nameClient = nameClient;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getSecondSurname() {
+        return secondSurname;
+    }
+
+    public void setSecondSurname(String secondSurname) {
+        this.secondSurname = secondSurname;
     }
 
     public String getCompany() {
@@ -74,6 +122,22 @@ public class ClientDTO {
 
     public void setNameRepre(String nameRepre) {
         this.nameRepre = nameRepre;
+    }
+
+    public String getSurnameRepre() {
+        return surnameRepre;
+    }
+
+    public void setSurnameRepre(String surnameRepre) {
+        this.surnameRepre = surnameRepre;
+    }
+
+    public String getSecondSurnameRepre() {
+        return secondSurnameRepre;
+    }
+
+    public void setSecondSurnameRepre(String secondSurnameRepre) {
+        this.secondSurnameRepre = secondSurnameRepre;
     }
 
     public String getPhoneRepre() {
