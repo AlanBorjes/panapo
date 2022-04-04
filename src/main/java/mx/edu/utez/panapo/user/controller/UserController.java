@@ -40,7 +40,7 @@ public class UserController {
     }
     @PostMapping("/confir/")
     public  ResponseEntity<Message> sdasda(@RequestBody UserDTO userDTO){
-        return  userService.savePassword(new User(passwordEncoder.encode(userDTO.getPassword()), userDTO.getCode(), userDTO.getUsername(), userDTO.getPerson(), userDTO.getStatus(), userDTO.getAuthorities()));
+        return  userService.savePassword(new User(passwordEncoder.encode(userDTO.getPassword()), userDTO.getCode(), userDTO.getUsername()));
     }
     @PostMapping("/password/")
     public ResponseEntity<Message> sendMailContact(@RequestBody UserDTO userDTO,

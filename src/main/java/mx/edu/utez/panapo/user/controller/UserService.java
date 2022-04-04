@@ -81,10 +81,13 @@ public class UserService {
 
     @Transactional(rollbackFor = {SQLException.class}) // si encuenra un error lo vuelve a hacer
     public ResponseEntity<Message> savePassword(User user){
+        System.out.println(user.getCode());
         if(userRepository.existsByCode(user.getCode())){
-            return new ResponseEntity<>(new Message("OK", false, userRepository.saveAndFlush(user)), HttpStatus.OK);
+            User user1 =  getByUsername(user.getUsername()).get();
+            user1.setPassword(user.getPassword());
+            return new ResponseEntity<>(new Message("OK", false, userRepository.saveAndFlush(user1)), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new Message("El Usuario no existe", true, null), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new Message("El codigo no existe", true, null), HttpStatus.BAD_REQUEST);
     }
 
     @Transactional(rollbackFor = {SQLException.class}) // si encuenra un error lo vuelve a hacer

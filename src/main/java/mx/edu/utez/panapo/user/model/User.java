@@ -64,10 +64,9 @@ public class User {
         this.password = password;
     }
 
-    public User(String password, String email, String code) {
+    public User(String password, String code, String username) {
         this.password = password;
-        this.username = person.getEmail();
-        this.person.setEmail(email);
+        this.username = username;
         this.code = code;
     }
 
