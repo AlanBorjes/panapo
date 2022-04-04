@@ -64,9 +64,8 @@ public class User {
         this.password = password;
     }
 
-    public User(String password, String code, String username) {
+    public User(String password, String code) {
         this.password = password;
-        this.username = username;
         this.code = code;
     }
 

@@ -83,7 +83,7 @@ public class UserService {
     public ResponseEntity<Message> savePassword(User user){
         System.out.println(user.getCode());
         if(userRepository.existsByCode(user.getCode())){
-            User user1 =  getByUsername(user.getUsername()).get();
+            User user1 =  getByCode(user.getCode()).get();
             user1.setPassword(user.getPassword());
             return new ResponseEntity<>(new Message("OK", false, userRepository.saveAndFlush(user1)), HttpStatus.OK);
         }
@@ -101,6 +101,11 @@ public class UserService {
     @Transactional(readOnly = true)
     public Optional<User> getByUsername(String username){
         return userRepository.findByUsername(username);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<User> getByCode(String code){
+        return userRepository.findByCode(code);
     }
 
 
