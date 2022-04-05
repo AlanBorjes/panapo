@@ -98,6 +98,16 @@ public class UserService {
         }return new ResponseEntity<>(new Message("La Usuario no existe", true, null), HttpStatus.BAD_REQUEST);
     }
 
+    @Transactional(rollbackFor = {SQLException.class})
+    public ResponseEntity<Message> deletebyid(long id){
+        if( userRepository.existsById(id)){
+            System.out.println(id);
+            userRepository.deleteById(id);
+            return new ResponseEntity<>(new Message("Usuario eliminado", false,null), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new Message("El usuario no existe", true, null), HttpStatus.BAD_REQUEST);
+    }
+
     @Transactional(readOnly = true)
     public Optional<User> getByUsername(String username){
         return userRepository.findByUsername(username);

@@ -13,7 +13,7 @@ public class Phases {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(nullable = false, unique = true, length = 20)
+    @Column(nullable = false, unique = true, length = 40)
     private String description;
     @OneToMany(mappedBy = "phases")
     @JsonIgnore

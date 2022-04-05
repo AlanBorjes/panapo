@@ -12,9 +12,9 @@ public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(nullable = false,unique = true, length = 6)
+    @Column(nullable = false,unique = true, length = 20)
     private String acronym;
-    @Column(nullable = false, unique = true, length = 20)
+    @Column(nullable = false, unique = true, length = 50)
     private String description;
     @ManyToMany(mappedBy = "authorities")
     @JsonIgnore

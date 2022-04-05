@@ -76,6 +76,10 @@ public class User {
         this.status = status;
     }
 
+    public User(long id) {
+        this.id = id;
+    }
+
     public User(String password, String username, String code, Person person, Status status, Set<Rol> authorities) {
         this.password = password;
         this.username = username;
