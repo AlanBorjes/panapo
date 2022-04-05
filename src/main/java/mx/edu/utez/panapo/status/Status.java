@@ -1,6 +1,7 @@
 package mx.edu.utez.panapo.status;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import mx.edu.utez.panapo.person.model.Person;
 import mx.edu.utez.panapo.user.model.User;
 
 import javax.persistence.*;
@@ -16,6 +17,9 @@ public class Status {
     @OneToMany(mappedBy = "status")
     @JsonIgnore
     private List<User> users;
+    @OneToMany(mappedBy = "status")
+    @JsonIgnore
+    private List<Person> personList;
 
     public Status() {
     }
@@ -26,12 +30,27 @@ public class Status {
         this.users = users;
     }
 
+    public Status(long id, String description, List<User> users, List<Person> personList) {
+        this.id = id;
+        this.description = description;
+        this.users = users;
+        this.personList = personList;
+    }
+
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public List<Person> getPersonList() {
+        return personList;
+    }
+
+    public void setPersonList(List<Person> personList) {
+        this.personList = personList;
     }
 
     public String getDescription() {

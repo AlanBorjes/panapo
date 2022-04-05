@@ -3,6 +3,7 @@ package mx.edu.utez.panapo.person.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import mx.edu.utez.panapo.personTeam.model.PersonTeam;
 import mx.edu.utez.panapo.profession.Profession;
+import mx.edu.utez.panapo.status.Status;
 import mx.edu.utez.panapo.user.model.User;
 import org.springframework.lang.NonNull;
 
@@ -32,6 +33,9 @@ public class Person {
     @OneToOne(mappedBy = "person")
     @JsonIgnore
     private User users;
+    @ManyToOne
+    @JoinColumn(name = "status_id")
+    private Status status;
 
     public Person() {
     }
@@ -44,6 +48,7 @@ public class Person {
         this.email = email;
         this.dateBirth = dateBirth;
         this.phone = phone;
+
         this.profession = profession;
     }
 
@@ -81,6 +86,16 @@ public class Person {
         this.personTeamList = personTeamList;
         this.users = users;
     }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+
 
     public long getId() {
         return id;
@@ -153,6 +168,7 @@ public class Person {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
 
     @NonNull
     public Profession getProfession() {

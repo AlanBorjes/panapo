@@ -2,6 +2,8 @@ package mx.edu.utez.panapo.user.controller;
 
 import mx.edu.utez.panapo.person.model.Person;
 import mx.edu.utez.panapo.person.model.PersonRepository;
+import mx.edu.utez.panapo.status.Status;
+import mx.edu.utez.panapo.status.StatusRepository;
 import mx.edu.utez.panapo.user.model.User;
 import mx.edu.utez.panapo.user.model.UserRepository;
 import mx.edu.utez.panapo.utils.Message;
@@ -21,6 +23,8 @@ public class UserService {
     UserRepository userRepository;
     @Autowired
     PersonRepository personRepository;
+    @Autowired
+    StatusRepository statusRepository;
 
 
     @Transactional(readOnly = true)
@@ -48,6 +52,7 @@ public class UserService {
         personTemp = personRepository.saveAndFlush(personTemp);
         user.setPerson(personTemp);
         user.setUsername(personTemp.getEmail());
+        user.setStatus(getByStatus(1).get());
         return new ResponseEntity<>(new Message("OK", false, userRepository.saveAndFlush(user)),
                 HttpStatus.OK);
     }
@@ -61,6 +66,7 @@ public class UserService {
             personTemp = personRepository.saveAndFlush(personTemp);
             usertemp.setPerson(personTemp);
             usertemp.setUsername(personTemp.getEmail());
+
             return new ResponseEntity<>(new Message("OK", false, userRepository.saveAndFlush(usertemp)), HttpStatus.OK);
         }
 
@@ -123,5 +129,11 @@ public class UserService {
     public Optional<User> getById(long id){
         return userRepository.findById(id);
     }
+
+    @Transactional(readOnly = true)
+    public Optional<Status> getByStatus(long id){
+        return statusRepository.findById(id);
+    }
+
 
 }

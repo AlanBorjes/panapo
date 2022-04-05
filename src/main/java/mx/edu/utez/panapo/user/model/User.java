@@ -43,7 +43,7 @@ public class User {
         this.status = status;
     }
 
-    public User(long id, Person person, Status status, Set<Rol> authorities) {
+    public User(long id, Person person, Set<Rol> authorities) {
         this.id = id;
 
         this.person = person;
