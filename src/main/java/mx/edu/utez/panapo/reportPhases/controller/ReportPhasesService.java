@@ -41,5 +41,6 @@ public class ReportPhasesService {
         }
         ReportPhases savedReportPhases = reportPhasesRepository.saveAndFlush(reportPhases);
         return new ResponseEntity<>(new Message("Project registrada correctamente", false, savedReportPhases), HttpStatus.OK);
+
     }
 }

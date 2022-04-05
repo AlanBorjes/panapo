@@ -27,18 +27,19 @@ public class Project {
     private String cotizacion;
     private String months;
     private String numberBeca;
+    private String priceClient;
     @Column(nullable = false)
     private String acronym;
     @Column(nullable = false)
     private String priority;
     @ManyToOne
-    @JoinColumn(name = "personTeam_id", nullable = false)
+    @JoinColumn(name = "personTeam_id" )
     private PersonTeam personTeam;
     @ManyToOne
     @JoinColumn(name = "phases_id")
     private Phases phases;
     @ManyToOne
-    @JoinColumn(name = "stages_id", nullable = false)
+    @JoinColumn(name = "stages_id")
     private Stages stages;
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
@@ -59,7 +60,7 @@ public class Project {
     public Project() {
     }
 
-    public Project(String name, String description, String dateStart, String dateEnd, String cotizacion, String months, String numberBeca, String acronym, String priority, PersonTeam personTeam, Phases phases, Stages stages, Client client, StatusProject statusProject, Project project) {
+    public Project(String name, String description, String dateStart, String dateEnd, String cotizacion, String months, String numberBeca, String priceClient, String acronym, String priority, PersonTeam personTeam, Phases phases, Stages stages, Client client, StatusProject statusProject, Project project) {
         this.name = name;
         this.description = description;
         this.dateStart = dateStart;
@@ -67,6 +68,7 @@ public class Project {
         this.cotizacion = cotizacion;
         this.months = months;
         this.numberBeca = numberBeca;
+        this.priceClient = priceClient;
         this.acronym = acronym;
         this.priority = priority;
         this.personTeam = personTeam;
@@ -77,7 +79,18 @@ public class Project {
         this.project = project;
     }
 
-    public Project(long id, String name, String description, String dateStart, String dateEnd, String cotizacion, String months, String numberBeca, String acronym, String priority, PersonTeam personTeam, Phases phases, Stages stages, Client client, StatusProject statusProject, Project project) {
+    public Project(String name, String description, String cotizacion, String months, String numberBeca, String priceClient, Client client, StatusProject statusProject) {
+        this.name = name;
+        this.description = description;
+        this.cotizacion = cotizacion;
+        this.months = months;
+        this.numberBeca = numberBeca;
+        this.priceClient = priceClient;
+        this.client = client;
+        this.statusProject = statusProject;
+    }
+
+    public Project(long id, String name, String description, String dateStart, String dateEnd, String cotizacion, String months, String numberBeca, String priceClient, String acronym, String priority, PersonTeam personTeam, Phases phases, Stages stages, Client client, StatusProject statusProject, Project project) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -86,6 +99,7 @@ public class Project {
         this.cotizacion = cotizacion;
         this.months = months;
         this.numberBeca = numberBeca;
+        this.priceClient = priceClient;
         this.acronym = acronym;
         this.priority = priority;
         this.personTeam = personTeam;
@@ -222,5 +236,21 @@ public class Project {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public String getPriceClient() {
+        return priceClient;
+    }
+
+    public void setPriceClient(String priceClient) {
+        this.priceClient = priceClient;
+    }
+
+    public PersonTeam getPersonTeam() {
+        return personTeam;
+    }
+
+    public void setPersonTeam(PersonTeam personTeam) {
+        this.personTeam = personTeam;
     }
 }

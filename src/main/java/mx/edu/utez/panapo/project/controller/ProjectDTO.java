@@ -16,6 +16,7 @@ public class ProjectDTO {
     private String cotizacion;
     private String months;
     private String numberBeca;
+    private String priceClient;
     private String acronym;
     private String priority;
     private PersonTeam personTeam;
@@ -63,6 +64,22 @@ public class ProjectDTO {
         this.client = client;
         this.statusProject = statusProject;
         this.project = project;
+    }
+
+    public String getPriceClient() {
+        return priceClient;
+    }
+
+    public void setPriceClient(String priceClient) {
+        this.priceClient = priceClient;
+    }
+
+    public PersonTeam getPersonTeam() {
+        return personTeam;
+    }
+
+    public void setPersonTeam(PersonTeam personTeam) {
+        this.personTeam = personTeam;
     }
 
     public long getId() {

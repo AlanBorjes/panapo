@@ -27,12 +27,12 @@ public class ProjectController {
 
     @PostMapping("/")
     public  ResponseEntity<Message> saveClient(@RequestBody ProjectDTO projectDTO){
-        return  projectService.save(new Project(projectDTO.getName(),projectDTO.getDescription(),projectDTO.getDateStart(),projectDTO.getDateEnd(),projectDTO.getCotizacion(),projectDTO.getMonths(),projectDTO.getNumberBeca(),projectDTO.getAcronym(),projectDTO.getPriority(),projectDTO.getTeam(),projectDTO.getPhases(),projectDTO.getStages(),projectDTO.getClient(),projectDTO.getStatusProject(),projectDTO.getProject()));
+        return  projectService.save(new Project(projectDTO.getName(),projectDTO.getDescription(),projectDTO.getCotizacion(),projectDTO.getMonths(),projectDTO.getNumberBeca(),projectDTO.getPriceClient(),projectDTO.getClient(),projectDTO.getStatusProject()));
     }
 
     @PutMapping("/")
     public ResponseEntity<Message> update(@RequestBody ProjectDTO projectDTO){
-        return projectService.update(new Project(projectDTO.getId(),projectDTO.getName(),projectDTO.getDescription(),projectDTO.getDateStart(),projectDTO.getDateEnd(),projectDTO.getCotizacion(),projectDTO.getMonths(),projectDTO.getNumberBeca(),projectDTO.getAcronym(),projectDTO.getPriority(),projectDTO.getTeam(),projectDTO.getPhases(),projectDTO.getStages(),projectDTO.getClient(),projectDTO.getStatusProject(),projectDTO.getProject()));
+        return projectService.update(new Project(projectDTO.getId(),projectDTO.getName(),projectDTO.getDescription(),projectDTO.getDateStart(),projectDTO.getDateEnd(),projectDTO.getCotizacion(),projectDTO.getMonths(),projectDTO.getNumberBeca(),projectDTO.getPriceClient(),projectDTO.getAcronym(),projectDTO.getPriority(),projectDTO.getPersonTeam(),projectDTO.getPhases(), projectDTO.getStages(), projectDTO.getClient(), projectDTO.getStatusProject(), projectDTO.getProject()));
     }
 
 }
