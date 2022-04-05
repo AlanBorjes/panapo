@@ -53,6 +53,7 @@ public class UserService {
         personTemp = personRepository.saveAndFlush(personTemp);
         user.setPerson(personTemp);
         user.setUsername(personTemp.getEmail());
+        user.setStatus(getByStatus(1).get());
         return new ResponseEntity<>(new Message("OK", false, userRepository.saveAndFlush(user)),
                 HttpStatus.OK);
     }

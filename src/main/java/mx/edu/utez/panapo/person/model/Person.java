@@ -52,6 +52,18 @@ public class Person {
         this.profession = profession;
     }
 
+    public Person(long id, String name, String surname, String secondSurname, String email, String dateBirth, String phone, @NonNull Profession profession, Status status) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.secondSurname = secondSurname;
+        this.email = email;
+        this.dateBirth = dateBirth;
+        this.phone = phone;
+        this.profession = profession;
+        this.status = status;
+    }
+
     public Person(String name, String surname, String secondSurname, String email, String dateBirth, String phone, @NonNull Profession profession) {
         this.name = name;
         this.surname = surname;
