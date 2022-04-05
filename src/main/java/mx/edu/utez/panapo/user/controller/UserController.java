@@ -2,7 +2,6 @@ package mx.edu.utez.panapo.user.controller;
 
 
 import mx.edu.utez.panapo.password.EmailDTO;
-import mx.edu.utez.panapo.status.StatusRepository;
 import mx.edu.utez.panapo.user.model.User;
 import mx.edu.utez.panapo.utils.EmailService;
 import mx.edu.utez.panapo.utils.Message;
@@ -37,7 +36,7 @@ public class UserController {
 
     @PostMapping("/")
     public  ResponseEntity<Message> saveUsersave(@RequestBody UserDTO userDTO){
-        return  userService.save(new User(passwordEncoder.encode(userDTO.getPassword()),userDTO.getPerson(),userDTO.getAuthorities(),userDTO.getStatus()));
+        return  userService.save(new User(passwordEncoder.encode(userDTO.getPassword()),userDTO.getPerson(),userDTO.getAuthorities()));
     }
     @PostMapping("/confir/")
     public  ResponseEntity<Message> sdasda(@RequestBody UserDTO userDTO){
@@ -61,7 +60,7 @@ public class UserController {
 
     @PutMapping("/")
     public ResponseEntity<Message> update( @RequestBody UserDTO userDTO){
-        return userService.update(new User(userDTO.getId(),userDTO.getPerson(), userDTO.getAuthorities()));
+        return userService.update(new User(userDTO.getId(),userDTO.getPerson(), userDTO.getStatus(), userDTO.getAuthorities()));
     }
 
     @PutMapping("/update")

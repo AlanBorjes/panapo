@@ -43,7 +43,7 @@ public class User {
         this.status = status;
     }
 
-    public User(long id, Person person, Set<Rol> authorities) {
+    public User(long id, Person person, Status status, Set<Rol> authorities) {
         this.id = id;
 
         this.person = person;
@@ -78,6 +78,12 @@ public class User {
 
     public User(long id) {
         this.id = id;
+    }
+
+    public User(String password, Person person, Set<Rol> authorities) {
+        this.password = password;
+        this.person = person;
+        this.authorities = authorities;
     }
 
     public User(String password, String username, String code, Person person, Status status, Set<Rol> authorities) {
