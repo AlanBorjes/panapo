@@ -50,4 +50,12 @@ public class ReportService {
         }
         return new ResponseEntity<>(new Message("El Reporte no existe", true, null), HttpStatus.BAD_REQUEST);
     }
+
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> findByProject(long id){
+        if( reportRepository.existsByProject(id)){
+            return new ResponseEntity<>(new Message("OK", false, reportRepository.findAllByProject(id)), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new Message("No existe reporte no existe", true, null), HttpStatus.BAD_REQUEST);
+    }
 }

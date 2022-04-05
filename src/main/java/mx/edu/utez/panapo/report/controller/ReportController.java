@@ -25,13 +25,18 @@ public class ReportController {
         return  reportService.findById(id);
     }
 
+    @GetMapping("/report/")
+    public  ResponseEntity<Message> getByPorcentage(@PathVariable("id") long id){
+        return  reportService.findById(id);
+    }
+
     @PostMapping("/")
     public  ResponseEntity<Message> saveClient(@RequestBody ReportDTO reportDTO){
-        return  reportService.save(new Report(reportDTO.getCost(),reportDTO.getDate(),reportDTO.getDaysDeviation(),reportDTO.getPercentage(),reportDTO.getPhasePlanned(),reportDTO.getPhasePlanned(),reportDTO.getPhasePlanned(),reportDTO.getStageReal(),reportDTO.getProject()));
+        return  reportService.save(new Report(reportDTO.getCost(),reportDTO.getDate(),reportDTO.getDaysDeviation(),reportDTO.getPhasePlanned(),reportDTO.getPhasePlanned(),reportDTO.getPhasePlanned(),reportDTO.getStageReal(),reportDTO.getPercentage(),reportDTO.getProject()));
     }
 
     @PutMapping("/")
     public ResponseEntity<Message> update(@RequestBody ReportDTO reportDTO){
-        return reportService.update(new Report(reportDTO.getId(),reportDTO.getCost(),reportDTO.getDate(),reportDTO.getDaysDeviation(),reportDTO.getPercentage(),reportDTO.getPhasePlanned(),reportDTO.getPhasePlanned(),reportDTO.getPhasePlanned(),reportDTO.getStageReal(),reportDTO.getProject()));
+        return reportService.update(new Report(reportDTO.getId(),reportDTO.getCost(),reportDTO.getDate(),reportDTO.getDaysDeviation(),reportDTO.getPhasePlanned(),reportDTO.getPhasePlanned(),reportDTO.getPhasePlanned(),reportDTO.getStageReal(),reportDTO.getPercentage(),reportDTO.getProject()));
     }
 }

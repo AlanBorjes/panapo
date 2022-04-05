@@ -3,8 +3,10 @@ package mx.edu.utez.panapo.report.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import mx.edu.utez.panapo.phases.Phases;
 import mx.edu.utez.panapo.project.model.Project;
+import mx.edu.utez.panapo.reportPhases.model.ReportPhases;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,19 +18,22 @@ public class Report {
     private String phaseReal;
     private String stagePlanned;
     private String stageReal;
-    private String percentage;
+    private int percentage;
     private String cost;
     private String daysDeviation;
     private String date;
     @ManyToOne
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
+    @OneToMany(mappedBy = "report")
+    @JsonIgnore
+    private List<ReportPhases> reportPhasesList;
 
     public Report() {
 
     }
 
-    public Report(long id, String phasePlanned, String phaseReal, String stagePlanned, String stageReal, String percentage, String cost, String daysDeviation, String date, Project project) {
+    public Report(long id, String phasePlanned, String phaseReal, String stagePlanned, String stageReal, String cost, String daysDeviation, String date, int percentage, Project project) {
         this.id = id;
         this.phasePlanned = phasePlanned;
         this.phaseReal = phaseReal;
@@ -41,7 +46,7 @@ public class Report {
         this.project = project;
     }
 
-    public Report(String phasePlanned, String phaseReal, String stagePlanned, String stageReal, String percentage, String cost, String daysDeviation, String date, Project project) {
+    public Report(String phasePlanned, String phaseReal, String stagePlanned, String stageReal, String cost, String daysDeviation, String date, int percentage, Project project) {
         this.phasePlanned = phasePlanned;
         this.phaseReal = phaseReal;
         this.stagePlanned = stagePlanned;
@@ -93,11 +98,11 @@ public class Report {
         this.stageReal = stageReal;
     }
 
-    public String getPercentage() {
+    public int getPercentage() {
         return percentage;
     }
 
-    public void setPercentage(String percentage) {
+    public void setPercentage(int percentage) {
         this.percentage = percentage;
     }
 

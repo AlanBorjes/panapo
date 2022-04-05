@@ -3,6 +3,7 @@ package mx.edu.utez.panapo.phases;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import mx.edu.utez.panapo.project.model.Project;
 import mx.edu.utez.panapo.report.model.Report;
+import mx.edu.utez.panapo.reportPhases.model.ReportPhases;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,6 +19,9 @@ public class Phases {
     @OneToMany(mappedBy = "phases")
     @JsonIgnore
     private List<Project> projectList;
+    @OneToMany(mappedBy = "phases")
+    @JsonIgnore
+    private List<ReportPhases> reportPhasesList;
 
     public Phases() {
     }

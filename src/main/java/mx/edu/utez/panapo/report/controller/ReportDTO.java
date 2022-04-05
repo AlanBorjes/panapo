@@ -9,7 +9,7 @@ public class ReportDTO {
     private String phaseReal;
     private String stagePlanned;
     private String stageReal;
-    private String percentage;
+    private int percentage;
     private String cost;
     private String daysDeviation;
     private String date;
@@ -19,7 +19,7 @@ public class ReportDTO {
     public ReportDTO() {
     }
 
-    public ReportDTO(long id, String phasePlanned, String phaseReal, String stagePlanned, String stageReal, String percentage, String cost, String daysDeviation, String date, Project project) {
+    public ReportDTO(long id, String phasePlanned, String phaseReal, String stagePlanned, String stageReal, int percentage, String cost, String daysDeviation, String date, Project project) {
         this.id = id;
         this.phasePlanned = phasePlanned;
         this.phaseReal = phaseReal;
@@ -32,7 +32,7 @@ public class ReportDTO {
         this.project = project;
     }
 
-    public ReportDTO(String phasePlanned, String phaseReal, String stagePlanned, String stageReal, String percentage, String cost, String daysDeviation, String date, Project project) {
+    public ReportDTO(String phasePlanned, String phaseReal, String stagePlanned, String stageReal, int percentage, String cost, String daysDeviation, String date, Project project) {
         this.phasePlanned = phasePlanned;
         this.phaseReal = phaseReal;
         this.stagePlanned = stagePlanned;
@@ -84,11 +84,11 @@ public class ReportDTO {
         this.stageReal = stageReal;
     }
 
-    public String getPercentage() {
+    public int getPercentage() {
         return percentage;
     }
 
-    public void setPercentage(String percentage) {
+    public void setPercentage(int percentage) {
         this.percentage = percentage;
     }
 
