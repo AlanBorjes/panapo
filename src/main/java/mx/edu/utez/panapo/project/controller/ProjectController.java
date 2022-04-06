@@ -36,8 +36,8 @@ public class ProjectController {
     }
 
     @PutMapping("/prospetos")
-    public ResponseEntity<Message> updateProspestois(@RequestBody ProjectDTO projectDTO){
-        return  projectService.save(new Project(projectDTO.getId(),projectDTO.getName(),projectDTO.getDescription(),projectDTO.getCotizacion(),projectDTO.getMonths(),projectDTO.getNumberBeca(),projectDTO.getPriceClient(),projectDTO.getClient(),projectDTO.getStatusProject()));
+    public ResponseEntity<Message> updateProspestos(@RequestBody ProjectDTO projectDTO){
+        return  projectService.save2(new Project(projectDTO.getId(),projectDTO.getName(),projectDTO.getDescription(),projectDTO.getCotizacion(),projectDTO.getMonths(),projectDTO.getNumberBeca(),projectDTO.getPriceClient(),projectDTO.getClient(),projectDTO.getStatusProject()));
     }
 
 }

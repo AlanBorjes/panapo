@@ -43,6 +43,16 @@ public class ProjectService {
     }
 
     @Transactional(rollbackFor = {SQLException.class}) // si encuenra un error lo vuelve a hacer
+    public ResponseEntity<Message> save2(Project project){
+        Optional<Project> existsProject = projectRepository.findByName(project.getName());
+        if(existsProject.isPresent()){
+            return new ResponseEntity<>(new Message("El Project ya existe", true, null), HttpStatus.BAD_REQUEST);
+        }
+        Project savedProject = projectRepository.saveAndFlush(project);
+        return new ResponseEntity<>(new Message("Project registrada correctamente", false, savedProject), HttpStatus.OK);
+    }
+
+    @Transactional(rollbackFor = {SQLException.class}) // si encuenra un error lo vuelve a hacer
     public ResponseEntity<Message> update(Project project){
         if(projectRepository.existsById(project.getId())){
             return new ResponseEntity<>(new Message("OK", false, projectRepository.saveAndFlush(project)), HttpStatus.OK);
