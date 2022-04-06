@@ -27,7 +27,7 @@ public class ProjectController {
 
     @PostMapping("/")
     public  ResponseEntity<Message> saveClient(@RequestBody ProjectDTO projectDTO){
-        return  projectService.save(new Project(projectDTO.getName(),projectDTO.getDescription(),projectDTO.getCotizacion(),projectDTO.getMonths(),projectDTO.getNumberBeca(),projectDTO.getPriceClient(),projectDTO.getClient(),projectDTO.getStatusProject()));
+        return  projectService.save2(new Project(projectDTO.getName(),projectDTO.getDescription(),projectDTO.getCotizacion(),projectDTO.getMonths(),projectDTO.getNumberBeca(),projectDTO.getPriceClient(),projectDTO.getClient(),projectDTO.getStatusProject()));
     }
 
     @PutMapping("/")
