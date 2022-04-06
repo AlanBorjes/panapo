@@ -28,9 +28,9 @@ public class Project {
     private String months;
     private String numberBeca;
     private String priceClient;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String acronym;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String priority;
     @ManyToOne
     @JoinColumn(name = "personTeam_id" )
