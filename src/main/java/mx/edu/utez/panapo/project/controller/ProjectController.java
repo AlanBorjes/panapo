@@ -35,4 +35,9 @@ public class ProjectController {
         return projectService.update(new Project(projectDTO.getId(),projectDTO.getName(),projectDTO.getDescription(),projectDTO.getDateStart(),projectDTO.getDateEnd(),projectDTO.getCotizacion(),projectDTO.getMonths(),projectDTO.getNumberBeca(),projectDTO.getPriceClient(),projectDTO.getAcronym(),projectDTO.getPriority(),projectDTO.getPersonTeam(),projectDTO.getPhases(), projectDTO.getStages(), projectDTO.getClient(), projectDTO.getStatusProject(), projectDTO.getProject()));
     }
 
+    @PutMapping("/prospetos")
+    public ResponseEntity<Message> updateProspestois(@RequestBody ProjectDTO projectDTO){
+        return  projectService.save(new Project(projectDTO.getId(),projectDTO.getName(),projectDTO.getDescription(),projectDTO.getCotizacion(),projectDTO.getMonths(),projectDTO.getNumberBeca(),projectDTO.getPriceClient(),projectDTO.getClient(),projectDTO.getStatusProject()));
+    }
+
 }

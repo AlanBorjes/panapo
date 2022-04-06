@@ -89,6 +89,17 @@ public class Project {
         this.client = client;
         this.statusProject = statusProject;
     }
+    public Project(long id,String name, String description, String cotizacion, String months, String numberBeca, String priceClient, Client client, StatusProject statusProject) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.cotizacion = cotizacion;
+        this.months = months;
+        this.numberBeca = numberBeca;
+        this.priceClient = priceClient;
+        this.client = client;
+        this.statusProject = statusProject;
+    }
 
     public Project(long id, String name, String description, String dateStart, String dateEnd, String cotizacion, String months, String numberBeca, String priceClient, String acronym, String priority, PersonTeam personTeam, Phases phases, Stages stages, Client client, StatusProject statusProject, Project project) {
         this.id = id;

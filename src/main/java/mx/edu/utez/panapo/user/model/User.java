@@ -86,6 +86,13 @@ public class User {
         this.authorities = authorities;
     }
 
+    public User(String password, Person person, Status status, Set<Rol> authorities) {
+        this.password = password;
+        this.person = person;
+        this.status = status;
+        this.authorities = authorities;
+    }
+
     public User(String password, String username, String code, Person person, Status status, Set<Rol> authorities) {
         this.password = password;
         this.username = username;

@@ -1,7 +1,6 @@
 package mx.edu.utez.panapo.person.controller;
 
 import mx.edu.utez.panapo.profession.Profession;
-import mx.edu.utez.panapo.status.Status;
 
 public class PersonDTO {
     private long id;
@@ -12,7 +11,7 @@ public class PersonDTO {
     private String dateBirth;
     private String phone;
     private Profession profession;
-    private Status status;
+
     public PersonDTO() {
     }
 
@@ -27,18 +26,6 @@ public class PersonDTO {
         this.profession = profession;
     }
 
-    public PersonDTO(long id, String name, String surname, String secondSurname, String email, String dateBirth, String phone, Profession profession, Status status) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.secondSurname = secondSurname;
-        this.email = email;
-        this.dateBirth = dateBirth;
-        this.phone = phone;
-        this.profession = profession;
-        this.status = status;
-    }
-
     public PersonDTO(String name, String surname, String secondSurname, String email, String dateBirth, String phone, Profession profession) {
         this.name = name;
         this.surname = surname;
@@ -47,14 +34,6 @@ public class PersonDTO {
         this.dateBirth = dateBirth;
         this.phone = phone;
         this.profession = profession;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
     }
 
     public long getId() {

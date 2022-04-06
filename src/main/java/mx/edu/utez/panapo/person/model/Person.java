@@ -40,6 +40,21 @@ public class Person {
     public Person() {
     }
 
+    public Person(long id, String name, String surname, String secondSurname, String email, String dateBirth, String phone, @NonNull Profession profession, User users, Status status) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.secondSurname = secondSurname;
+        this.email = email;
+        this.dateBirth = dateBirth;
+        this.phone = phone;
+        this.profession = profession;
+        this.users = users;
+        this.status = status;
+    }
+
+
+
     public Person(long id, String name, String surname, String secondSurname, String email, String dateBirth, String phone, Profession profession) {
         this.id = id;
         this.name = name;
